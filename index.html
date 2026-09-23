@@ -1,13 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evriwanken</title>
-</head>
-<body>
-    <main>
-        <!-- here -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen flex-grow bg-green-100 text-black">
+    <!-- nav - start -->
+    <nav>
+      <div class="w-full bg-green-800 text-white fixed top-0 z-[99999]">
+        <div
+          class="flex justify-between px-4 sm:px-20 lg:px-48 items-center gap-4"
+        >
+          <p class="text-lg font-bold py-3 lg:py-5">
+            <a href="/">Evriwanken</a>
+          </p>
+          <ul class="hidden lg:flex items-center gap-[50px] text-sm">
+            <li
+              class="py-5 hover:cursor-pointer hover:underline underline-offset-[24px] decoration-2 decoration-white"
+            >
+              <a href="/" class="">Beranda</a>
+            </li>
+            <li
+              class="py-5 hover:cursor-pointer hover:underline underline-offset-[24px] decoration-2 decoration-white"
+            >
+              <a href="/#program" class="">Program</a>
+            </li>
+          </ul>
+          <div class="lg:hidden flex items-center">
+            <button
+              class="items-center hover:text-u_third"
+              type="button"
+              id="hamburgerbutton"
+              aria-controls="menumobile"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="block size-6"
+                id="hamburgericon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 9h16.5m-16.5 6.75h16.5"
+                />
+              </svg>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="hidden size-6"
+                id="closeicon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="menumobile"
+          class="lg:hidden hidden transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="absolute flex flex-col w-full top-[51px] bg-green-700 text-lg z-[99998]"
+          >
+            <ul class="flex flex-col items-center text-sm">
+              <li
+                class="flex w-full py-4 justify-center items-center hover:bg-green-800"
+              >
+                <a href="/" class="">Beranda</a>
+              </li>
+              <li
+                class="flex w-full py-4 justify-center items-center hover:bg-green-800"
+              >
+                <a href="/program" class="">Program</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- nav - end -->
+
+    <!-- main - start -->
+    <main class="flex flex-col pb-20 gap-[36px] lg:gap-[64px]">
+      <section
+        id="program"
+        class="flex flex-col gap-[24px] scroll-animate opacity-0 translate-y-10 transition-all duration-700 ease-out"
+      >
+        <img src="/images/hero1.jpg" alt="" class="pt-12 lg:aspect-video" />
+      </section>
+
+      <section
+        id="#program"
+        class="flex flex-col px-4 sm:px-20 lg:px-48 gap-[24px]"
+      >
+        <div
+          class="flex flex-col gap-[8px] scroll-animate opacity-0 translate-y-10 transition-all duration-700 ease-out"
+        >
+          <h1 class="text-2xl font-bold">About Evriwanken</h1>
+          <p class="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+            velit, consequatur neque doloremque reiciendis eius commodi
+            repellendus tenetur quos atque possimus sequi dicta nihil id ratione
+            accusantium maxime minima consectetur? <br /><br />
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel,
+            veniam repellat. Dignissimos, minus nisi odit dicta vero aliquam,
+            quod voluptatibus distinctio sint illum molestiae ea incidunt
+            asperiores voluptatem veniam ad?
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col gap-[16px] scroll-animate opacity-0 translate-y-10 transition-all duration-700 ease-out"
+        >
+          <h2 class="text-2xl font-bold">Program</h2>
+        </div>
+      </section>
     </main>
-</body>
+    <!-- main - end -->
+  </body>
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-y-10");
+            entry.target.classList.add("opacity-100", "translate-y-0");
+          } else {
+            entry.target.classList.remove("opacity-100", "translate-y-0");
+            entry.target.classList.add("opacity-0", "translate-y-10");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    const elements = document.querySelectorAll(".scroll-animate");
+    elements.forEach((el) => observer.observe(el));
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburgerButton = document.getElementById("hamburgerbutton");
+    const menuMobile = document.getElementById("menumobile");
+    const hamburgerIcon = document.getElementById("hamburgericon");
+    const closeIcon = document.getElementById("closeicon");
+
+    if (!hamburgerButton || !menuMobile || !hamburgerIcon || !closeIcon) return;
+
+    hamburgerButton.addEventListener("click", function () {
+      menuMobile.classList.toggle("hidden");
+      hamburgerIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+
+      const isExpanded =
+        hamburgerButton.getAttribute("aria-expanded") === "true";
+      hamburgerButton.setAttribute("aria-expanded", !isExpanded);
+    });
+
+    document.addEventListener("click", function (e) {
+      const isMenuOpen = !menuMobile.classList.contains("hidden");
+      const clickInsideMenu = menuMobile.contains(e.target);
+      const clickOnButton = hamburgerButton.contains(e.target);
+
+      if (isMenuOpen && !clickInsideMenu && !clickOnButton) {
+        menuMobile.classList.add("hidden");
+        hamburgerIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        hamburgerButton.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+</script>
