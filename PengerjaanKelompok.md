@@ -1,4 +1,4 @@
-### Tugas masing-masing anggota
+## Tugas masing-masing anggota
 
 1. Hilal Muzaki = Mengembangkan navigasi yang responsif.
 
