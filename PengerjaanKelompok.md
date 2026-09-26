@@ -1,5 +1,7 @@
 ### Tugas masing-masing anggota
 
-Hilal Muzaki = Mengembangkan navigasi yang responsif.
-Fakhri = Mengembangkan body section termasuk hero section dan yang lainnya.
-Rifqi = Mengembangkan footer section.
+1. Hilal Muzaki = Mengembangkan navigasi yang responsif.
+
+2. Fakhri = Mengembangkan body section termasuk hero section dan yang lainnya.
+
+3. Rifqi = Mengembangkan footer section.
